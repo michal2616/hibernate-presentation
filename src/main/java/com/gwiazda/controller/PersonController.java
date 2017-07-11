@@ -12,6 +12,7 @@ import com.gwiazda.model.Address;
 import com.gwiazda.model.Person;
 import com.gwiazda.repository.PersonRepository;
 import com.gwiazda.service.PersonService;
+import com.gwiazda.specification.PersonSpecification;
 
 /**
  * Created by us70us on 2017-07-05.
@@ -39,6 +40,13 @@ public class PersonController {
         List<Person> allPeople = personRepository.findById(Long.valueOf(id));
 
         return allPeople;
+    }
+
+    @RequestMapping(path = "/getallspec", method = RequestMethod.GET)
+    public List<Person> getone(){
+        List<Person> onePeople = personRepository.findAll(new PersonSpecification());
+
+        return onePeople;
     }
 
     @RequestMapping(path = "/getall/logs", method = RequestMethod.GET)

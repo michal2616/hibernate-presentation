@@ -4,10 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -51,9 +47,9 @@ public class Address {
         this.postalCode = postalCode;
     }
 
-    public void setPerson(Person person) {
-        this.person = person;
-    }
+//    public void setPerson(Person person) {
+//        this.person = person;
+//    }
 
     private String street;
     private int nr;
@@ -61,12 +57,12 @@ public class Address {
 
 
 
-    @JsonIgnore
-    public Person getPerson() {
-        return person;
-    }
+//    @JsonIgnore
+//    public Person getPerson() {
+//        return person;
+//    }
 
-    @ManyToOne
-    @JoinColumn(name = "person_fk")
-    private Person person;
+//    @ManyToOne
+//    @JoinColumn(name = "person_fk")
+//    private Person person;
 }

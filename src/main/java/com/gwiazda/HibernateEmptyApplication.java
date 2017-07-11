@@ -20,6 +20,7 @@ import com.gwiazda.repository.PersonRepository;
 @Transactional
 public class HibernateEmptyApplication implements CommandLineRunner {
 
+	public static final String JANUSZ = "Janusz";
 	@Autowired
 	PersonRepository personRepository;
 
@@ -37,13 +38,13 @@ public class HibernateEmptyApplication implements CommandLineRunner {
 
 	public void createFakePeople(){
 
-		IntStream.range(1, 3).forEach(i -> savePerson(i));
+		IntStream.range(1, 10).forEach(i -> savePerson(i));
 
 	}
 
 	private void savePerson(int i) {
 
-		List<Address> addressList = IntStream.range(1, 50).boxed().
+		List<Address> addressList = IntStream.range(1, 11).boxed().
 				map(a -> Address.builder()
 				.city("Katowice" + a)
 				.postalCode("a" + new SecureRandom().nextInt(10000))
@@ -52,8 +53,8 @@ public class HibernateEmptyApplication implements CommandLineRunner {
 				).collect(Collectors.toList());
 
 
-		Person nowaOsoba = Person.builder().name("Janusz" + i).addresses(addressList).build();
-		nowaOsoba.getAddresses().forEach(address -> address.setPerson(nowaOsoba));
+		Person nowaOsoba = Person.builder().name(JANUSZ + i).addresses(addressList).build();
+//		nowaOsoba.getAddresses().forEach(address -> address.setPerson(nowaOsoba));
 //		Person nowaOsoba = Person.builder().name("Janusz" + i).build();
 		personRepository.save(nowaOsoba);
 	}
