@@ -11,8 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.BatchSize;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -35,10 +33,11 @@ public class Person {
     private String name;
     private String lastName;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch= FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "person", fetch= FetchType.LAZY)
+//    @OneToMany(cascade = CascadeType.ALL, fetch= FetchType.LAZY)
     @BatchSize(size=13)
 //    @Fetch(FetchMode.SELECT)
-    @Fetch(FetchMode.SUBSELECT)
+//    @Fetch(FetchMode.SUBSELECT)
 //    @Fetch(FetchMode.JOIN)
     private List<Address> addresses;
 
@@ -65,7 +64,7 @@ public class Person {
 //    public Person(String name, String lastName) {
 //        this.name = name;
 //        this.lastName = lastName;
-//    }
+//
 
     public String getLastName() {
         return lastName;

@@ -14,6 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.gwiazda.model.Address;
 import com.gwiazda.model.Person;
+import com.gwiazda.repository.AddressRepository;
 import com.gwiazda.repository.PersonRepository;
 
 @SpringBootApplication
@@ -23,6 +24,9 @@ public class HibernateEmptyApplication implements CommandLineRunner {
 	public static final String JANUSZ = "Janusz";
 	@Autowired
 	PersonRepository personRepository;
+
+	@Autowired
+	AddressRepository addressRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(HibernateEmptyApplication.class, args);
@@ -54,8 +58,10 @@ public class HibernateEmptyApplication implements CommandLineRunner {
 
 
 		Person nowaOsoba = Person.builder().name(JANUSZ + i).addresses(addressList).build();
-//		nowaOsoba.getAddresses().forEach(address -> address.setPerson(nowaOsoba));
-//		Person nowaOsoba = Person.builder().name("Janusz" + i).build();
+		nowaOsoba.getAddresses().forEach(address -> address.setPerson(nowaOsoba));
 		personRepository.save(nowaOsoba);
+
+		Address innyAdres = Address.builder().street("zielona").city("wloszczowa").person(nowaOsoba).build();
+		addressRepository.save(innyAdres);
 	}
 }
