@@ -57,8 +57,13 @@ public class HibernateEmptyApplication implements CommandLineRunner {
 				).collect(Collectors.toList());
 
 
-		Person nowaOsoba = Person.builder().name(JANUSZ + i).addresses(addressList).build();
-		nowaOsoba.getAddresses().forEach(address -> address.setPerson(nowaOsoba));
+//will not work since there is no reference from addresses to Person
+
+//		Person nowaOsoba = Person.builder().name(JANUSZ + i).addresses(addressList).build();
+
+//will work since setAddresses has logic to add reference from address to Person
+		Person nowaOsoba = Person.builder().name(JANUSZ + i).build();
+		nowaOsoba.setAddresses(addressList);
 		personRepository.save(nowaOsoba);
 
 		Address innyAdres = Address.builder().street("zielona").city("wloszczowa").person(nowaOsoba).build();

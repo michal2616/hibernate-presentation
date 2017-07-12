@@ -60,7 +60,7 @@ public class Address {
     private String postalCode;
 
 
-
+//without it it json will kill your memory
     @JsonIgnore
     public Person getPerson() {
         return person;

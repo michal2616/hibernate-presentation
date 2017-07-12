@@ -60,6 +60,7 @@ public class Person {
 
     public void setAddresses(List<Address> addresses) {
         this.addresses = addresses;
+        addresses.forEach(address -> address.setPerson(this));
     }
 //    public Person(String name, String lastName) {
 //        this.name = name;
