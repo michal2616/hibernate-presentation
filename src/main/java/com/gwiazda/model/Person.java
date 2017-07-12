@@ -62,10 +62,6 @@ public class Person {
         this.addresses = addresses;
         addresses.forEach(address -> address.setPerson(this));
     }
-//    public Person(String name, String lastName) {
-//        this.name = name;
-//        this.lastName = lastName;
-//
 
     public String getLastName() {
         return lastName;
