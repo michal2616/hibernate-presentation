@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -36,10 +35,9 @@ public class Person {
     private String lastName;
 
     @OneToMany(cascade = CascadeType.ALL, fetch= FetchType.LAZY)
-    @BatchSize(size=13)
-//    @Fetch(FetchMode.SELECT)
-    @Fetch(FetchMode.SUBSELECT)
-//    @Fetch(FetchMode.JOIN)
+    @Fetch(FetchMode.SELECT)
+//    @BatchSize(size=3)
+//    @Fetch(FetchMode.SUBSELECT)
     private List<Address> addresses;
 
 
@@ -62,10 +60,6 @@ public class Person {
     public void setAddresses(List<Address> addresses) {
         this.addresses = addresses;
     }
-//    public Person(String name, String lastName) {
-//        this.name = name;
-//        this.lastName = lastName;
-//    }
 
     public String getLastName() {
         return lastName;

@@ -47,22 +47,7 @@ public class Address {
         this.postalCode = postalCode;
     }
 
-//    public void setPerson(Person person) {
-//        this.person = person;
-//    }
-
     private String street;
     private int nr;
     private String postalCode;
-
-
-
-//    @JsonIgnore
-//    public Person getPerson() {
-//        return person;
-//    }
-
-//    @ManyToOne
-//    @JoinColumn(name = "person_fk")
-//    private Person person;
 }

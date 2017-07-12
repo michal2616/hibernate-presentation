@@ -54,8 +54,6 @@ public class HibernateEmptyApplication implements CommandLineRunner {
 
 
 		Person nowaOsoba = Person.builder().name(JANUSZ + i).addresses(addressList).build();
-//		nowaOsoba.getAddresses().forEach(address -> address.setPerson(nowaOsoba));
-//		Person nowaOsoba = Person.builder().name("Janusz" + i).build();
 		personRepository.save(nowaOsoba);
 	}
 }
